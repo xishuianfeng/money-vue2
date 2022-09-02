@@ -1,18 +1,17 @@
 <template>
-  <div>    
-    <hr>
+  <div class="nav">    
     <router-link to="/money">记账</router-link>丨
     <router-link to="/labels">标签</router-link>丨
     <router-link to="/statistics">统计</router-link>
   </div>
 </template>
 
-<script>
+<script lang="ts">
 export default {
 
 }
 </script>
 
-<style>
-
+<style lang="scss" scoped>
+    .nav{border:1px solid red;}
 </style>
