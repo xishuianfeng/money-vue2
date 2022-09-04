@@ -7,8 +7,10 @@
 </template>
 
 <script lang="ts">
+  import x from '@/assets/icons/label.svg';
+  
 export default {
-
+  name:'Nav',
 }
 </script>
 
