@@ -23,9 +23,10 @@
 </script>
 
 <style lang="scss" scoped>
+  @import '@/assets/style/help.scss';
     nav{
+      @extend %outerShadow;
       display: flex;
-      box-shadow: 0 0 3px rgba(0,0,0,0.25);
       flex-direction: row;
       font-style: 12px;
       > .item{
@@ -41,7 +42,7 @@
         }
       }
       > .item.selected{
-        color: lightblue;
+        color: $color-highlight;
       }
     }
 </style>
