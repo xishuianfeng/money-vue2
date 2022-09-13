@@ -1,21 +1,31 @@
 <template>
   <Layout>
-    编辑标签
+    <div>
+      <Icon name='left' />
+      <span>编辑标签</span>
+      <Notes fieldName="标签名" placeholder="请输入标签名"/>
+    </div>
   </Layout>
 </template>
 
 <script lang="ts">
-  import tagListModel from '@/models/tagListModel';
   import Vue from 'vue';
   import { Component } from 'vue-property-decorator';
+  import tagListModel from '@/models/tagListModel';
+  import Icon from '@/components/Icon.vue';
+  import Notes from '../components/Money/Notes.vue';
 
-  @Component
-  export default class Label extends Vue{
+  @Component({
+    components:{Notes}
+  })
+  
+  export default class EditLabels extends Vue{
     create(){
       const id = this.$route.params.id;
       tagListModel.fetch();
       const tags = tagListModel.data;
       const tag = tags.filter(t => t.id === id)[0];
+ 
       if(tag){
         console.log(tag);
       }else{
