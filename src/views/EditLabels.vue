@@ -27,7 +27,7 @@
   })
   
   export default class EditLabels extends Vue{
-	  tag?:{id:string,name:string } ={id:'',name:''}
+	  tag?:{id:string,name:string } =undefined;
 
     created(){
       const id = this.$route.params.id;
