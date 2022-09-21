@@ -6,10 +6,10 @@
 			<span class="rightIcon"></span>
     </div>
 			<div class="formWrapper">
-      	<FormItem :value="tag.name" 
-									@update:value="update"
-				          fieldName="标签名" 
-									placeholder="请输入标签名"/>
+				<FormItem :value="tag.name" 
+					@update:value="update"
+					fieldName="标签名" 
+					placeholder="请输入标签名"/>
 			</div>
 			<div class="buttonWrapper">
       	<Button @click="remove">删除标签</Button>
@@ -32,35 +32,32 @@
 	get tag(){
 		return this.$store.state.currentTag
 	}
-    created(){
+
+	created(){
 		const id = this.$route.params.id;
+		this.$store.commit('fetchTags');
 		this.$store.commit('setCurrentTag',id);
 		if(!this.tag){
 			this.$router.replace('/404');
 		}
-    }
+	}
 
 	update(name:string){
 		if(this.tag){
-			// store.updateTag(this.tag.id,name)
+			this.$store.commit('updateTag',{id: this.tag.id, name});
 		}
 	}
 
 	remove(){
 		if(this.tag){
-			return 
-			// if(store.removeTag(this.tag.id)){
-			// 	this.$router.back()
-			// }else{
-			// 	window.alert('删除失败')
-			// }
+			this.$store.commit('removeTag',this.tag.id);
 		}	
 	}
 
 	goBack(){
 		this.$router.back();
 	}
-  }
+}
 </script>
 
 <style lang="scss" scoped>

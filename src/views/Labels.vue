@@ -30,7 +30,7 @@
       return this.$store.state.tagList;
     }
     created(){
-      this.$store.commit('fatchTags');
+      this.$store.commit('fetchTags');
     };
   }
 </script>
