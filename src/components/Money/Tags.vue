@@ -13,32 +13,35 @@
 </template>
 
 <script lang="ts">
-  import TagHelper from '@/mixins/TagHelper';
-  import Vue from 'vue';
-  import { mixins } from 'vue-class-component';
-  import { Component, Prop } from 'vue-property-decorator';
+import TagHelper from '@/mixins/TagHelper';
+import { mixins } from 'vue-class-component';
+import { Component, Prop } from 'vue-property-decorator';
 
-  @Component
-  export default class Tags extends mixins(TagHelper){
-    get tagList(){
-        return this.$store.state.tagList;
-    }
-    selectedTags :string[] = [];
-
-    created(){
-      this.$store.commit('fetchTags');
-    };
-    toggle(tag:string){
-      const index = this.selectedTags.indexOf(tag);
-      if(index>=0){
-        this.selectedTags.splice(index,1);
-      }else{
-        this.selectedTags.push(tag);
-      }
-      this.$emit('update:value',this.selectedTags)
-    };
+@Component
+export default class Tags extends mixins(TagHelper){
+  get tagList(){
+    return this.$store.state.tagList;
   }
-  </script>
+  get recordList(){
+    return this.$store.state.recordList; 
+  }
+
+  selectedTags :string[] = [];
+
+  created(){
+    this.$store.commit('fetchTags');
+  };
+  toggle(tag:string){
+    const index = this.selectedTags.indexOf(tag);
+    if (index>=0){
+      this.selectedTags.splice(index,1);
+    }else{
+      this.selectedTags.push(tag);
+    }
+    this.$emit('update:value',this.selectedTags)
+  };
+}
+</script>
 
 <style lang="scss">
     .tags{

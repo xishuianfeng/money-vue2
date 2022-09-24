@@ -9,7 +9,7 @@
       <div class="notes">
         <FormItem fieldName="备注" placeholder="请在这里输入备注" @update:value = 'onUpdateNotes'/>
       </div>
-      <Tags />
+      <Tags @update:value = 'updateTags'/>
     </Layout>
   </div>
 </template>
@@ -40,6 +40,9 @@
     };
     created(){
       this.$store.commit('fetchRecords');
+    };
+    updateTags(value:Tag[]){
+      this.record.tags = value;
     };
     onUpdateNotes(value:string){
       this.record.notes = value

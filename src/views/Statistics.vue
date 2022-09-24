@@ -30,6 +30,8 @@ import clone from "@/lib/clone";
 })
   export default class Statistics extends Vue {
     tagString(tags:Tag[]){
+      console.log(tags);
+      
       return tags.length === 0 ? '无' : tags.join(',');
     }
 
@@ -51,8 +53,9 @@ import clone from "@/lib/clone";
       return (this.$store.state as RootState).recordList;
     };
     
-    get groupedList(){
+    get groupedList(){      
       const {recordList} = this;
+      console.log(recordList);
       if(recordList.length === 0){return [];}
 
       const newList = clone(recordList).filter(r => r.type === this.type).sort((a,b)=>dayjs(b.createAt).valueOf() - dayjs(a.createAt).valueOf())
@@ -70,7 +73,6 @@ import clone from "@/lib/clone";
       result.map(group => {
         group.total = group.items.reduce((sum,item) => sum+item.amount,0);
       });
-
       return result;
     };
 
