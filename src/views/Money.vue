@@ -43,6 +43,7 @@
     };
     updateTags(value:Tag[]){
       this.record.tags = value;
+      //存在 bug  需要吧tag的name 传给record的tags  但是我不会传 
     };
     onUpdateNotes(value:string){
       this.record.notes = value
