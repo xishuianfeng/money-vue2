@@ -7,9 +7,9 @@
       <Tabs :dataSource="recordTypeList"
             :value.sync="record.type"/>
       <div class="notes">
-        <FormItem fieldName="备注" placeholder="清在这里输入备注" @update:value = 'onUpdateNotes'/>
+        <FormItem fieldName="备注" placeholder="请在这里输入备注" @update:value = 'onUpdateNotes'/>
       </div>
-      <Tags/>
+      <Tags />
     </Layout>
   </div>
 </template>
@@ -56,8 +56,8 @@
 
 </script>
 
-<style scoped>
-  .layout-content{
+<style lang="scss" scoped>
+  ::v-deep .layout-content{
     display: flex;
     flex-direction: column-reverse;
   }
