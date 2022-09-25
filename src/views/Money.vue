@@ -1,15 +1,16 @@
 <template>
   <div>
     <Layout class-prefix="layout">
-      {{record}}
       <NumberPad @update:value = 'onUpdateAmount' @submit="saveRecord"/>
       <!-- <Types :velue='record.type' @update:value = 'onUpdateType'/> -->
       <Tabs :dataSource="recordTypeList"
             :value.sync="record.type"/>
       <div class="notes">
-        <FormItem fieldName="备注" placeholder="请在这里输入备注" @update:value = 'onUpdateNotes'/>
+        <FormItem fieldName="备注" 
+                  placeholder="请在这里输入备注" 
+                  :value.sync='record.notes'/>
       </div>
-      <Tags @update:value = 'updateTags'/>
+      <Tags @update:value = 'record.tags = $event'/>
     </Layout>
   </div>
 </template>
@@ -41,10 +42,6 @@
     created(){
       this.$store.commit('fetchRecords');
     };
-    updateTags(value:Tag[]){
-      this.record.tags = value;
-      //存在 bug  需要吧tag的name 传给record的tags  但是我不会传 
-    };
     onUpdateNotes(value:string){
       this.record.notes = value
     };
@@ -54,6 +51,8 @@
 
     saveRecord(){
       this.$store.commit('createRecord',this.record);
+      window.alert('添加成功');
+      this.record.notes = '';
     };
   }
 
